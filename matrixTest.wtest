@@ -1,9 +1,51 @@
+import nave.*
+import pasajeros.*
 
-
-describe "group of tests " {
-
-  test "test 01" {
-    assert.equals(100, 50+50)
+describe "matrix el elegido" {
+  test "Neo es el elegido" {
+    assert.that(neo.esElegido())
   }
 
+  test "Morfeo no es el elegido" {
+    assert.notThat(morfeo.esElegido())
+  }
+   test "Trinity no es el elegido" {
+    assert.notThat(trinity.esElegido())
+  }
+test "la vitalidad de Morfeo cambia porque salta" {
+  morfeo.saltar()
+  assert.equals(7, morfeo.vitalidad())
 }
+test "Neo, el elegido, salta y su vitalidad es 5" {
+  neo.saltar()
+  assert.equals(5, neo.vitalidad())
+}
+
+test "la cantidad de pasajeros en la nave es 3" {
+nave.subirALaNave(neo)
+nave.subirALaNave(morfeo)
+nave.subirALaNave(trinity)
+assert.equals(3, nave.cantidadDePasajeros())
+}
+
+test "el pasajero con mayor vitalidad es Neo" {
+  nave.subirALaNave(neo)
+  nave.subirALaNave(morfeo)
+  nave.subirALaNave(trinity)
+  assert.equals(neo, nave.pasajeroConMayorVitalidad())
+}
+test "esta nave no esta equilibrada" {
+  nave.subirALaNave(neo)
+  nave.subirALaNave(morfeo)
+  nave.subirALaNave(trinity)
+  assert.notThat(nave.estaEquilibrada())
+}
+test "el elegido de la nave es Neo" {
+  nave.subirALaNave(neo)
+  nave.subirALaNave(morfeo)
+  nave.subirALaNave(trinity)
+ assert.that(nave.estaElELegidoEnLaNave()) 
+}
+
+}
+
